@@ -1,26 +1,54 @@
 import streamlit as st
 import joblib
 import string
+import nltk
 from nltk.corpus import stopwords
+from nltk.tokenize import word_tokenize
 
+try:
+    nltk.data.find("corpora/stopwords")
+except LookupError:
+    nltk.download("stopwords")
+
+try:
+    nltk.data.find("tokenizers/punkt")
+except LookupError:
+    nltk.download("punkt")
+
+# For newer NLTK versions
+try:
+    nltk.data.find("tokenizers/punkt_tab")
+except LookupError:
+    try:
+        nltk.download("punkt_tab")
+    except:
+        pass
 
 model = joblib.load("Email_Spam_Prediction.pkl")
 vectorizer = joblib.load("tfidf_vectorizer.pkl")
 
 
 def transform_text(text):
+
+    # Lowercase
     text = text.lower()
 
     # Remove punctuation
-    text = "".join(char for char in text if char not in string.punctuation)
+    text = text.translate(str.maketrans("", "", string.punctuation))
+
+    # Tokenize
+    words = word_tokenize(text)
 
     # Remove stopwords
-    words = []
-    for word in text.split():
-        if word not in stopwords.words("english"):
-            words.append(word)
+    stop_words = set(stopwords.words("english"))
 
-    return " ".join(words)
+    clean_words = []
+
+    for word in words:
+        if word not in stop_words:
+            clean_words.append(word)
+
+    return " ".join(clean_words)
 
 
 st.set_page_config(
