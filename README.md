@@ -9,9 +9,6 @@ A Machine Learning web application that classifies emails as **Spam** or **Ham (
 🌐 **Streamlit App:**  
 https://email-spam-prediction-pbt5ukd3qrbgs5g4dx2hda.streamlit.app/
 
-💻 **GitHub Repository:**  
-https://github.com/SumitGupta-ai/Email-Spam-Prediction
-
 ---
 
 ## 📌 Features
