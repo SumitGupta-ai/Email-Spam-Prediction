@@ -180,18 +180,8 @@ screenshots/app.png
 
 ---
 
-## 👨‍💻 Author
 
-**Sumit Gupta**
 
-GitHub:
-https://github.com/SumitGupta-ai
 
-LinkedIn:
-(Add your LinkedIn Profile)
 
----
 
-## ⭐ Support
-
-If you like this project, don't forget to ⭐ the repository.
